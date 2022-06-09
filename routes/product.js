@@ -44,7 +44,6 @@ router.get("/:id", async (req, res) => {
 
 router.post("/",  uploadPhoto.single("photo"), async (req, res) => {
   const result = await cloudinary.uploader.upload(req.file.path);
-  console.log(result)
   try {
     const product = new ProductModel({
       name: req.body.name,

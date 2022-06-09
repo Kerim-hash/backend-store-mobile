@@ -16,6 +16,7 @@ router.get("/", async (req, res) => {
     });
   }
 });
+
 router.get("/:id", async (req, res) => {
   try {
     const category = await CategoryModel.findById(req.params.id);
@@ -91,6 +92,6 @@ router.put("/:id", async (req, res) => {
         status: false,
       });
     }
-  });
+});
 
 module.exports = router;
