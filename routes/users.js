@@ -1,7 +1,7 @@
 const express = require("express");
 const { UserModel } = require("../models/user.model");
 const router = express.Router();
-const bcryptjs = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 router.get("/", async (req, res) => {
   try {
@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
         const product = new UserModel({
           name: req.body.name,
           email: req.body.email,
-          password: bcryptjs.hashSync(req.body.password, 10),
+          password: bcrypt.hashSync(req.body.password, 10),
           phone: req.body.phone,
           street: req.body.street,
           apartment: req.body.apartment,
@@ -74,35 +74,25 @@ router.post('/', async (req, res) => {
 })
 
 router.post("/login", async (req, res) => {
-  try {
-    const user = await UserModel.findOne({email: req.body.email})
+  const user = await UserModel.findOne({email: req.body.email})
+  const secret = process.env.secret;
+  if(!user) {
+      return res.status(400).send('The user not found');
+  }
 
-    if(!user){
-        res.status(404).send({message: "User not found", status: false});
-    }
-    
-    if(user && bcryptjs.compareSync(req.body.password, user.password)) {
-      const secret = process.env.secret
+  if(user && bcrypt.compareSync(req.body.password, user.password)) {
       const token = jwt.sign(
-        {
-          userId: user.id,
-          isAdmin: user.Router,
-
-        },
-        secret, {
-          expiresIn: '1d'
-        }
+          {
+              userId: user.id,
+              isAdmin: user.isAdmin
+          },
+          secret,
+          {expiresIn : '1d'}
       )
-      res.status(200).send({data: {user: user, token: token}, status: true})
-    }else {
-      res.status(400).send({message: "password id wrong", status: false})
-    }
-   
-  } catch (err) {
-    res.status(500).send({
-      message: err.message,
-      status: false,
-    });
+     
+      res.status(200).send({user: user.email , token: token}) 
+  } else {
+     res.status(400).send('password is wrong!');
   }
 });
 

@@ -11,7 +11,7 @@ const ProductSchema = mongoose.Schema(
       max: 300,
     },
     description: { required: true, type: String },
-    richDescription: { required: true, type: String, default: "" },
+    richDescription: { type: String, default: "" },
     images: [{ type: String }],
     brand: [{ type: String, default: "" }],
     price: { required: true, type: Number, default: 0 },
