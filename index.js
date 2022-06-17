@@ -38,28 +38,9 @@ app.get("/", (req, res) => {
   res.send("Running");
 });
 
-app.get("/products", async (req, res) => {
-  let filter = {};
-  if (req.query.categories) {
-    filter = { category: req.query.categories.split(",") };
-  }
-  const products = await ProductModel.find(filter).populate("category");
 
-  if (!products) {
-    res.status(404).json({
-      data: "products not found",
-      status: false,
-    });
-  }
 
-  res.status(200).json({
-    data: products,
-    status: true,
-  });
-});
-
-const PORT = process.env.PORT || 5000;
-
-app.listen(process.env.PORT || PORT, () => {
-  console.log(`Express is working on port ${PORT}`);
-});
+let port = process.env.PORT || 5000
+app.listen(port, () => {
+        console.log(port)
+})
