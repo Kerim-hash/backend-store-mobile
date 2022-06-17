@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 // app.use(authJwt());
 // mongoose connect
 mongoose
-    .connect(process.env.MONGO_URL, 
+.connect('mongodb+srv://kerim:kera2003kera@cluster0.bvnpd.mongodb.net/?retryWrites=true&w=majority', 
     { useNewUrlParser: true, useUnifiedTopology: true })
     .then((res) => console.log("Connected to DB"))
     .catch((error) => console.log(error));
