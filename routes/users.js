@@ -75,7 +75,7 @@ router.post('/', async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const user = await UserModel.findOne({email: req.body.email})
-  const secret = process.env.secret;
+  const secret ='13123djnwkdn2';
   if(!user) {
       return res.status(400).send('The user not found');
   }
