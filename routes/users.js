@@ -3,6 +3,7 @@ const { UserModel } = require("../models/user.model");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
 router.get("/", async (req, res) => {
   try {
     const users = await UserModel.find();
@@ -17,6 +18,7 @@ router.get("/", async (req, res) => {
     });
   }
 });
+
 router.get("/get/count", async (req, res) => {
   try {
     const count = await UserModel.countDocuments();
