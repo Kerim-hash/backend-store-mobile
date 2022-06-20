@@ -7,9 +7,6 @@ const CategorySchema = new Schema(
     icon: {type: String},
     color: {type: String},
     
-  },
-  {
-    timestamps: true,
   }
 );
 

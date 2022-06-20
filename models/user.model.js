@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema
 
-const UserSchema = new Schema(
+const UserSchema = new mongoose.Schema(
   {
     name: {type: String, required: true},
     email: {type: String, required: true, unique: true},
@@ -20,17 +19,17 @@ const UserSchema = new Schema(
 );
 
 
-UserSchema.virtual('id').get(function () {
-    return this._id.toHexString();
-  })
-  UserSchema.set('toJSON', {
-    virtuals: true,
-    transform: function (_, obj,) {
-      // delete obj.password;
-      delete obj.confirm_hash;
-      return obj;
-    }
-  })
+// UserSchema.virtual('id').get(function () {
+//     return this._id.toHexString();
+//   })
+//   UserSchema.set('toJSON', {
+//     virtuals: true,
+//     transform: function (_, obj,) {
+//       // delete obj.password;
+//       delete obj.confirm_hash;
+//       return obj;
+//     }
+//   })
 
 
 module.exports = mongoose.model('User', UserSchema)

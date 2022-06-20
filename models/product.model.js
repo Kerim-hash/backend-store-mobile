@@ -23,11 +23,11 @@ const ProductSchema =  new mongoose.Schema({
     isFeatured: { type: Boolean, default: false },
   });
 
-ProductSchema.virtual('id').get(function () {
-  return this._id.toHexString();
-})
-ProductSchema.set('toJSON', {
-  virtuals: true
-})
+// ProductSchema.virtual('id').get(function () {
+//   return this._id.toHexString();
+// })
+// ProductSchema.set('toJSON', {
+//   virtuals: true
+// })
 
 module.exports = mongoose.model("Product", ProductSchema);

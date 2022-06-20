@@ -38,7 +38,6 @@ app.use("/api/orders", orderRouter);
 app.get("/", (req, res) => {
   res.send("Running");
 });
-app.get("/products",ProductsController.index);
 
 let PORT = process.env.PORT || 5000
 
