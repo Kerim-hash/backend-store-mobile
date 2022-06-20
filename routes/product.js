@@ -3,7 +3,7 @@ const cloudinary = require("../helpers/cloudinary");
 const uploadPhoto = require("../helpers/upload-photo");
 const router = express.Router();
 const { CategoryModel } = require("../models/category.model");
-const { ProductModel } = require("../models/product.model");
+const  ProductModel = require("../models/product.model");
 
 router.get("/", async (req, res) => {
       let filter = {}
