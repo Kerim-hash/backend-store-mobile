@@ -3,11 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-// import
-const productRouter = require("./routes/product");
-const CategoryRouter = require("./routes/categories");
-const userRouter = require("./routes/users");
-const orderRouter = require("./routes/orders");
+
 const authJwt = require("./helpers/jwt");
 const res = require("express/lib/response");
 
@@ -18,6 +14,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 // app.use(authJwt());
 
+// import
+const productRouter = require("./routes/product");
+const CategoryRouter = require("./routes/categories");
+const userRouter = require("./routes/users");
+const orderRouter = require("./routes/orders");
 // routes
 app.use("/api/products", productRouter);
 app.use("/api/category", CategoryRouter);
