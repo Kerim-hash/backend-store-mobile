@@ -7,7 +7,6 @@ const app = express();
 const authJwt = require("./helpers/jwt");
 const res = require("express/lib/response");
 
-const ProductsController = require("./controllers/products")
 
 // промежуточное программное обеспечение
 app.use(express.json());
