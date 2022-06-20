@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
-const ProductSchema = mongoose.Schema(
-  {
+
+const Schema = mongoose.Schema
+const ProductSchema =  new Schema({
     name: { required: true, type: String },
     image: { required: true, type: String, default: "" },
     counterInStock: {
@@ -21,11 +22,7 @@ const ProductSchema = mongoose.Schema(
     },
     rating: { type: Number, default: 0 },
     isFeatured: { type: Boolean, default: false },
-  },
-  {
-    timestamps: true,
-  }
-);
+  });
 
 ProductSchema.virtual('id').get(function () {
   return this._id.toHexString();

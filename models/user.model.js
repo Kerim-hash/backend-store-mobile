@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema
 
-
-const UserSchema = mongoose.Schema(
+const UserSchema = new Schema(
   {
     name: {type: String, required: true},
     email: {type: String, required: true, unique: true},
@@ -33,8 +33,6 @@ UserSchema.virtual('id').get(function () {
   })
 
 
-  
-  
-exports.UserModel = mongoose.model("User", UserSchema);
+module.exports = mongoose.model('User', UserSchema)
 exports.UserSchema = UserSchema
 
