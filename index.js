@@ -43,12 +43,12 @@ let PORT = process.env.PORT || 5000
 //   .then((res) => console.log("Connected to DB"))
 //   .catch((error) => console.log("connection error"));
 mongoose.connect(
-  'mongodb+srv://kerim:kera2003kera@cluster0.bvnpd.mongodb.net/?retryWrites=true&w=majority', {},
+  'mongodb+srv://kerim:kera2003kera@cluster0.bvnpd.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true,
+        useUnifiedTopology: true},
   (err) => {
     if (err) {
       console.error('DB: fail');
       console.error(err.message);
-      process.exit(1);
     }
     console.log('DB: connected');
   
