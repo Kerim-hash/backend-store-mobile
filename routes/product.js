@@ -121,20 +121,20 @@ router.delete("/:id", (req, res) => {
   }
 });
 
-router.get("/get/count", async (req, res) => {
-  try {
-    const count = await ProductModel.countDocuments();
-    res.status(200).json({
-      data: count,
-      status: true,
-    });
-  } catch (err) {
-    res.status(500).send({
-      message: err.message,
-      status: false,
-    });
-  }
-});
+// router.get("/get/count", async (req, res) => {
+//   try {
+//     const count = await ProductModel.countDocuments();
+//     res.status(200).json({
+//       data: count,
+//       status: true,
+//     });
+//   } catch (err) {
+//     res.status(500).send({
+//       message: err.message,
+//       status: false,
+//     });
+//   }
+// });
 
 router.get("/get/featured/:count", async (req, res) => {
     const count = req.params.count ?  req.params.count : 0

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const OrderSchema = mongoose.Schema(
+const Schema = mongoose.Schema
+const OrderSchema = new Schema(
   {
     orderItems: [
       {
@@ -31,4 +32,4 @@ OrderSchema.set("toJSON", {
   virtuals: true,
 });
 
-exports.OrderModel = mongoose.model("Order", OrderSchema);
+module.exports = mongoose.model("Order", OrderSchema);
