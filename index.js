@@ -12,7 +12,6 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(authJwt());
-
 // mongoose connect
 mongoose
   .connect(
@@ -29,7 +28,6 @@ const productRouter = require("./routes/product");
 const CategoryRouter = require("./routes/categories");
 const userRouter = require("./routes/users");
 const orderRouter = require("./routes/orders");
-
 // routes
 app.use("/api/products", productRouter);
 app.use("/api/category", CategoryRouter);
