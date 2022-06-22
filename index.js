@@ -16,7 +16,7 @@ app.use(cors());
 // mongoose connect
 mongoose
   .connect(
-    `mongodb+srv://kerim:kera2003kera@cluster0.bvnpd.mongodb.net/?retryWrites=true&w=majority`,
+    'mongodb+srv://kerim:JmZDhBAwoPz0c6Dz@cluster0.bvnpd.mongodb.net/?retryWrites=true&w=majority',
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
