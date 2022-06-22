@@ -6,17 +6,16 @@ const app = express();
 
 const authJwt = require("./helpers/jwt");
 const res = require("express/lib/response");
-
-
+require("dotenv").config();
 // промежуточное программное обеспечение
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-// app.use(authJwt());
+app.use(authJwt());
 // mongoose connect
 mongoose
   .connect(
-    'mongodb+srv://kerim:JmZDhBAwoPz0c6Dz@cluster0.bvnpd.mongodb.net/?retryWrites=true&w=majority',
+    process.env.MONGO_URL,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -38,6 +37,6 @@ app.get("/", (req, res) => {
   res.send("Running");
 });
 
-let PORT = process.env.PORT || 5000
+let PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log('blog server running on port', PORT));
+app.listen(PORT, () => console.log("blog server running on port", PORT));
